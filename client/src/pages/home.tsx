@@ -41,13 +41,13 @@ export default function Home() {
               Get a trusted local roofer at your door fast — no obligation, no sales pressure.
             </p>
 
-            <Link href="/form">
-              <Button 
-                className="bg-[#EA580C] hover:bg-[#c2410c] text-white text-lg px-8 py-6 h-auto rounded-md font-semibold transition-all shadow-xl hover:translate-y-[-2px] hover:shadow-2xl"
+            <Link href="/form" className="inline-block">
+              <span 
+                className="inline-flex items-center bg-[#EA580C] hover:bg-[#c2410c] text-white text-lg px-8 py-4 rounded-md font-semibold transition-all shadow-xl hover:translate-y-[-2px] hover:shadow-2xl cursor-pointer"
               >
                 Get My Free Inspection
                 <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
+              </span>
             </Link>
           </div>
         </div>
