@@ -1,23 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Roof Inspection | Buckeye Roof Rescue | Central Ohio</title>
+  <meta name="description" content="Free same-day or next-day roof inspection in Carroll, Pickerington, Lancaster & all Central Ohio. Local roofers. No obligation.">
+  <style>
+    body { font-family: 'Helvetica Neue', Arial, sans-serif; margin:0; background:#0b2d39; color:#fff; line-height:1.6; }
+    .container { max-width:600px; margin:20px auto; background:#fff; color:#333; border-radius:12px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.2); }
+    header { background:#c8102e; padding:30px 20px; text-align:center; }
+    h1 { margin:0; font-size:2.2em; }
+    .badge { background:#000; color:#c8102e; padding:5px 12px; border-radius:20px; font-weight:bold; font-size:0.8em; display:inline-block; margin-top:8px; }
+    .content { padding:30px 25px; }
+    .trust { text-align:center; margin:20px 0; font-size:1.1em; }
+    form { background:#f9f9f9; padding:25px; border-radius:10px; }
+    input, select, textarea { width:100%; padding:14px; margin:10px 0; border:1px solid #ddd; border-radius:6px; box-sizing:border-box; font-size:1em; }
+    button { background:#c8102e; color:white; padding:16px; border:none; border-radius:6px; font-size:1.3em; width:100%; cursor:pointer; margin-top:15px; }
+    .disclaimer { font-size:0.75em; color:#666; text-align:center; margin:30px 0 10px; }
+    .photos { font-size:0.9em; color:#c8102e; margin:15px 0 5px; }
+    @media (max-width:480px) { h1 { font-size:1.8em; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Buckeye Roof Rescue</h1>
+      <div class="badge">FREE ROOF INSPECTION – CENTRAL OHIO</div>
+    </header>
+    <div class="content">
+      <p class="trust"><strong>Over 500 local homeowners helped this year.</strong><br>Same-day or next-day inspection — no obligation.</p>
+      <p>We connect you with trusted, local roofing contractors in Carroll, Pickerington, Lancaster, Canal Winchester, and surrounding areas.</p>
 
-    <meta property="og:title" content="Buckeye Roof Rescue - Free Inspection" />
-    <meta property="og:description" content="Get a trusted local roofer at your door fast. Free emergency roof inspection in New Albany, Granville, and Pataskala." />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Buckeye Roof Rescue - Free Inspection" />
-    <meta name="twitter:description" content="Get a trusted local roofer at your door fast. Free emergency roof inspection." />
+      <form action="https://formspree.io/f/YOUR-FORMSPREE-ID" method="POST">
+        <input type="text" name="name" placeholder="Your Full Name" required>
+        <input type="tel" name="phone" placeholder="Best Phone Number" required>
+        <input type="text" name="address" placeholder="Street Address + City (or ZIP)" required>
+        <select name="issue" required>
+          <option value="" disabled selected>What's the problem?</option>
+          <option value="leak">Leak or water stains inside</option>
+          <option value="storm">Storm / hail damage</option>
+          <option value="missing">Missing or damaged shingles</option>
+          <option value="old">Roof is 15+ years old</option>
+          <option value="inspection">Just want an honest inspection</option>
+        </select>
+        <textarea name="details" rows="3" placeholder="Tell us what you're seeing (optional)"></textarea>
+        <div class="photos">Optional: Attach photos of the damage (helps us match you faster)</div>
+        <input type="file" name="photos" multiple accept="image/*">
+        <button type="submit">GET MY FREE INSPECTION →</button>
+      </form>
 
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+      <p style="text-align:center; margin-top:20px; font-size:0.9em;">
+        <strong>You'll get a call or text within minutes</strong> from a local roofer ready to help.
+      </p>
+    </div>
+    <div class="disclaimer">
+      *Not affiliated with The Ohio State University. We only share your info with one trusted local contractor.
+    </div>
+  </div>
+</body>
 </html>
