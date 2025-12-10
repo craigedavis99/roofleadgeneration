@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useLocation } from "wouter";
-import { ShieldCheck, Upload, X, Image } from "lucide-react";
+import { ShieldCheck, Upload, X, ImageIcon } from "lucide-react";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -178,7 +178,7 @@ export default function FormPage() {
                   <div className="flex flex-wrap gap-2 mt-3">
                     {files.map((file, index) => (
                       <div key={index} className="relative group bg-slate-100 rounded-lg p-2 flex items-center gap-2">
-                        <Image className="w-4 h-4 text-slate-500" />
+                        <ImageIcon className="w-4 h-4 text-slate-500" />
                         <span className="text-sm text-slate-600 max-w-[150px] truncate">{file.name}</span>
                         <button
                           type="button"
