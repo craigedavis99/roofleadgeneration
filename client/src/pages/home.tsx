@@ -34,12 +34,19 @@ export default function Home() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      const response = await fetch("/api/leads", {
+      const formData = new FormData();
+      formData.append("name", values.fullName);
+      formData.append("email", values.email);
+      formData.append("phone", values.phone);
+      formData.append("message", values.message || "");
+      formData.append("consent", values.consent ? "Yes" : "No");
+
+      const response = await fetch("https://formspree.io/f/manrplvz", {
         method: "POST",
+        body: formData,
         headers: {
-          "Content-Type": "application/json",
+          Accept: "application/json",
         },
-        body: JSON.stringify(values),
       });
 
       if (!response.ok) {
