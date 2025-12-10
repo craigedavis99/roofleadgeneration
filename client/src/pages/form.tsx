@@ -1,8 +1,9 @@
+import { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useLocation } from "wouter";
-import { ShieldCheck } from "lucide-react";
+import { ShieldCheck, Upload, X, Image } from "lucide-react";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -19,6 +20,9 @@ const formSchema = z.object({
 
 export default function FormPage() {
   const [, setLocation] = useLocation();
+  const [files, setFiles] = useState<File[]>([]);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -30,6 +34,17 @@ export default function FormPage() {
     },
   });
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const newFiles = Array.from(e.target.files);
+      setFiles(prev => [...prev, ...newFiles].slice(0, 5)); // Limit to 5 files
+    }
+  };
+
+  const removeFile = (index: number) => {
+    setFiles(prev => prev.filter((_, i) => i !== index));
+  };
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       const formData = new FormData();
@@ -38,6 +53,11 @@ export default function FormPage() {
       formData.append("phone", values.phone);
       formData.append("message", values.message || "");
       formData.append("consent", values.consent ? "Yes" : "No");
+      
+      // Append files
+      files.forEach((file, index) => {
+        formData.append(`photo_${index + 1}`, file);
+      });
 
       const response = await fetch("https://formspree.io/f/manrplvz", {
         method: "POST",
@@ -132,6 +152,46 @@ export default function FormPage() {
                   </FormItem>
                 )}
               />
+
+              {/* Photo Upload */}
+              <div className="space-y-2">
+                <FormLabel className="text-slate-700">Upload Photos (optional)</FormLabel>
+                <div 
+                  className="border-2 border-dashed border-slate-200 rounded-lg p-6 text-center cursor-pointer hover:border-[#EA580C] transition-colors bg-slate-50"
+                  onClick={() => fileInputRef.current?.click()}
+                >
+                  <Upload className="w-8 h-8 text-slate-400 mx-auto mb-2" />
+                  <p className="text-sm text-slate-600">Click to upload photos of your roof</p>
+                  <p className="text-xs text-slate-400 mt-1">Up to 5 images (JPG, PNG)</p>
+                </div>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*"
+                  multiple
+                  onChange={handleFileChange}
+                  className="hidden"
+                />
+                
+                {/* File previews */}
+                {files.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mt-3">
+                    {files.map((file, index) => (
+                      <div key={index} className="relative group bg-slate-100 rounded-lg p-2 flex items-center gap-2">
+                        <Image className="w-4 h-4 text-slate-500" />
+                        <span className="text-sm text-slate-600 max-w-[150px] truncate">{file.name}</span>
+                        <button
+                          type="button"
+                          onClick={() => removeFile(index)}
+                          className="text-slate-400 hover:text-red-500 transition-colors"
+                        >
+                          <X className="w-4 h-4" />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
 
               <FormField
                 control={form.control}
