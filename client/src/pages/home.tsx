@@ -32,12 +32,25 @@ export default function Home() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    // Simulate API call
-    setTimeout(() => {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      const response = await fetch("/api/leads", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit form");
+      }
+
       setLocation("/success");
-    }, 500);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("There was an error submitting your request. Please try again.");
+    }
   }
 
   const scrollToForm = () => {
