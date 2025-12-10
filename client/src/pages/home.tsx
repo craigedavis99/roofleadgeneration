@@ -145,7 +145,7 @@ export default function Home() {
                       <FormItem>
                         <FormLabel className="text-slate-700">Full Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="Craig Davis" className="bg-slate-50 border-slate-200 h-12" {...field} />
+                          <Input className="bg-slate-50 border-slate-200 h-12" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -160,7 +160,7 @@ export default function Home() {
                         <FormItem>
                           <FormLabel className="text-slate-700">Email</FormLabel>
                           <FormControl>
-                            <Input placeholder="craig.e.davis@gmail.com" className="bg-slate-50 border-slate-200 h-12" {...field} />
+                            <Input className="bg-slate-50 border-slate-200 h-12" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -173,7 +173,7 @@ export default function Home() {
                         <FormItem>
                           <FormLabel className="text-slate-700">Phone Number</FormLabel>
                           <FormControl>
-                            <Input placeholder="6146231385" className="bg-slate-50 border-slate-200 h-12" {...field} />
+                            <Input className="bg-slate-50 border-slate-200 h-12" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -189,7 +189,6 @@ export default function Home() {
                         <FormLabel className="text-slate-700">How can we help?</FormLabel>
                         <FormControl>
                           <Textarea 
-                            placeholder="Help" 
                             className="bg-slate-50 border-slate-200 min-h-[100px] resize-none" 
                             {...field} 
                           />
